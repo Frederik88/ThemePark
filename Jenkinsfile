@@ -4,17 +4,19 @@ pipeline {
         pollSCM '* * * * *'
     }
     stages {
-	dir('park'){
 		stage('Build') {
-            		steps {
-                		sh './mvn compile'
-            		}
-        	}
-        	stage('Test') {
-            		steps {
-                		sh './mvn test'
-            		}
-        	}
-	}
+            steps {
+				dir('park'){
+                	sh './mvn compile'
+				}
+            }
+        }
+        stage('Test') {
+            steps {
+				dir('park'){
+                	sh './mvn test'
+				}
+            }
+        }
     }
 }
