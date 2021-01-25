@@ -7,14 +7,14 @@ pipeline {
 		stage('Build') {
             steps {
 				dir('park'){
-                	sh './mvn compile'
+                	sh 'mvn compile'
 				}
             }
         }
         stage('Test') {
             steps {
 				dir('park'){
-                	sh './mvn test'
+                	sh 'mvn test'
 				}
             }
         }
