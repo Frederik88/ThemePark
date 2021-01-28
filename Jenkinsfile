@@ -11,7 +11,9 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh "${scannerHome}/park/"
+                    dir('park'){
+                        sh 'mvn clean package sonar:sonar'
+                    }
                 }
             }
         }
