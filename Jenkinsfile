@@ -11,7 +11,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh "${scannerHome}/park/sonar-scanner"
+                    sh "${scannerHome}/park/"
                 }
             }
         }
