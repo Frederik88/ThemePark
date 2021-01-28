@@ -10,7 +10,7 @@ pipeline {
                 script {
                     scannerHome = tool 'SonarScanner 4.6'
                 }
-                withSonarQubeEnv('Sonar Scanner', envOnly: true) {
+                withSonarQubeEnv(scannerHome, envOnly: true) {
                     // This expands the evironment variables SONAR_CONFIG_NAME, SONAR_HOST_URL, SONAR_AUTH_TOKEN that can be used by any script.
                     println "${ env.SONAR_HOST_URL }"
                 }
