@@ -5,17 +5,17 @@ pipeline {
     }
 
     stages {
-        stage('SonarQube analysis') {
+        stage('Sonarqube') {
+            environment {
+                scannerHome = tool 'SonarQubeScanner'
+            }
             steps {
-                script {
-                    scannerHome = tool 'SonarScanner 4.6'
-                }
-                withSonarQubeEnv(scannerHome, envOnly: true) {
-                    // This expands the evironment variables SONAR_CONFIG_NAME, SONAR_HOST_URL, SONAR_AUTH_TOKEN that can be used by any script.
-                    println "${ env.SONAR_HOST_URL }"
+                withSonarQubeEnv('SonarQube') {
+                    sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
         }
+
         stage('Build') {
             steps {
                 dir('park') {
